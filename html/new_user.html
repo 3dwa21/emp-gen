@@ -2,51 +2,78 @@
 <html>
 	<head>
 		<title>Registration</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	</head>
 
 	<body>
-		<center>
-			<h1>Registration</h1>
+		<nav class="navbar navbar-inverse navbar-fixed-top">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="#">
+						<?php 
+							include_once("../php/helper.php"); 
+							echo getUserName();
+						?>
+					</a>
+				</div>
+				<ul class="nav navbar-nav">
+					<li><a href="../main.html">Home</a></li>
+					<li><a href="mod_settings.html">Mod-Settings</a></li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<?php
+						include_once("../php/helper.php"); 
+						echo checkLoginLogout();
+					?>
+				</ul>
+			</div>
+		</nav>
+		<h1>Registration</h1>
+		<br>
+		<form action="../php/check_registration.php" method="POST">
+			<?php 
+				include_once("../php/helper.php");
+
+				if (isset($_GET["nouser"])) {
+					echo displayDanger("Please enter username!");
+				}
+				if (isset($_GET["nopw"])) {
+					echo displayDanger("Please enter password!");
+				}
+				if (isset($_GET["nopwc"])) {
+					echo displayDanger("Please enter password check!");
+				}
+				if (isset($_GET["taken"])) {
+					echo displayDanger("Username is already taken!");
+				}
+				if (isset($_GET["fixpw"])) {
+					echo displayDanger("Entered passwords don't match!");
+				}
+			?>
 			<br>
-			<form action="../php/check_registration.php" method="POST">
-				<?php 
-					if (isset($_GET["nouser"])) {
-						echo "Please enter username!<br>";
-					}
-					if (isset($_GET["nopw"])) {
-						echo "Please enter password!<br>";
-					}
-					if (isset($_GET["nopwc"])) {
-						echo "Please enter password check!<br>";
-					}
-					if (isset($_GET["taken"])) {
-						echo "Username is already taken!<br>";
-					}
-					if (isset($_GET["fixpw"])) {
-						echo "Entered passwords don't match!<br>";
-					}
-				?>
+			<fieldset>
+				<table>
+					<tr>
+						<td>User:</td>
+						<td><input type="text" size="20" name="username"></td>
+					</tr>
+					<tr>
+						<td>Password:</td>
+						<td><input type="password" size="20" name="password"></td>
+					</tr>
+					<tr>
+						<td>Password check:</td>
+						<td><input type="password" size="20" name="passwordcheck"></td>
+					</tr>
+				</table>
 				<br>
-				<fieldset>
-					<table>
-						<tr>
-							<td>User:</td>
-							<td><input type="text" size="20" name="username"></td>
-						</tr>
-						<tr>
-							<td>Password:</td>
-							<td><input type="password" size="20" name="password"></td>
-						</tr>
-						<tr>
-							<td>Password check:</td>
-							<td><input type="password" size="20" name="passwordcheck"></td>
-						</tr>
-					</table>
-					<br>
-					<input type="submit" value="Register">
-					<a href="login.html"><input type="button" value="Back"></a>
-				</fieldset>
-			</form>
-		</center>
+				<input type="submit" value="Register">
+				<a href="login.html"><input type="button" value="Back"></a>
+			</fieldset>
+		</form>
 	</body>
 </html>

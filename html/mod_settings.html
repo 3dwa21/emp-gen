@@ -20,10 +20,8 @@
 					<div class="navbar-header">
 						<a class="navbar-brand" href="#">
 							<?php 
-								include("../php/globals.php"); 
-								if(isset($_COOKIE[$cookiename])) {
-									echo $_COOKIE[$cookiename];
-								}
+								include_once("../php/helper.php"); 
+								echo getUserName();
 							?>
 						</a>
 					</div>
@@ -33,12 +31,8 @@
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
 						<?php
-							include("../php/globals.php"); 
-							if(isset($_COOKIE[$cookiename])) {
-								echo "<li><a href=\"../php/logout.php\"><span class=\"glyphicon glyphicon-log-out\"></span> Logout</a></li>";
-							} else {
-								echo "<li><a href=\"login.html\"><span class=\"glyphicon glyphicon-log-in\"></span> Login</a></li>";
-							}
+							include_once("../php/helper.php"); 
+							echo checkLoginLogout();
 						?>
 					</ul>
 				</div>
