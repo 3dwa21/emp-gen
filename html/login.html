@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Login</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		
+		<style>
+			.buttonlogin {
+				border: 0;
+				background: none;
+				background-color: #EA6153;
+				box-shadow: none;
+				border-radius: 0px;
+				color: white;
+				font-weight: bold;
+				text-align: left;
+				width: 100%;
+			}
+			
+			.buttonnew {
+				border: 0;
+				background: none;
+				background-color: #EA6153;
+				box-shadow: none;
+				border-radius: 0px;
+				color: white;
+				font-weight: bold;
+				text-align: right;
+				width: 100%;
+			}
+			
+			.buttonguest {
+				border: 0;
+				background: none;
+				background-color: #ffa9a0;
+				box-shadow: none;
+				border-radius: 0px;
+				color: white;
+				font-weight: bold;
+				text-align: center;
+				width: 100%;
+			}
+		
+			table {
+				border-collapse: collapse;
+			}
+		</style>
+	</head>
+	<body>
+		<nav class="navbar navbar-inverse navbar-fixed-top">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="#">
+						<?php 
+							include("../php/globals.php"); 
+							if(isset($_COOKIE[$cookiename])) {
+								echo $_COOKIE[$cookiename];
+							}
+						?>
+					</a>
+				</div>
+				<ul class="nav navbar-nav">
+					<li><a href="../main.html">Home</a></li>
+					<li><a href="mod_settings.html">Mod-Settings</a></li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<?php
+						include("../php/globals.php"); 
+						if(isset($_COOKIE[$cookiename])) {
+							echo "<li><a href=\"../php/logout.php\"><span class=\"glyphicon glyphicon-log-out\"></span> Logout</a></li>";
+						} else {
+							echo "<li><a href=\"login.html\"><span class=\"glyphicon glyphicon-log-in\"></span> Login</a></li>";
+						}
+					?>
+				</ul>
+			</div>
+		</nav>
+		<div class="container" style="margin-top:75px">
+			<?php
+				if(isset($_GET["notloggedin"])) {
+					echo "<div class=\"alert alert-danger alert-dismissible\">";
+					echo "<button type=\"button\" class=\"close\" data-dismiss=\"alert\">&times;</button>";
+					echo "<strong>Not logged in!</strong>";
+					echo "</div>";
+				}
+			?>
+		</div>
+		<form action="../php/check_login.php" method="POST">
+			<table align="center" style="margin-top: 100px;">
+				<tr>
+					<td>
+						<?php
+							if (isset($_GET["success"])) {
+								if ($_GET["success"] == 0) {
+									echo "Invalid login!<br><br>";
+								}
+							} else {
+								echo "<br><br>";
+							}
+						?>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<table>
+							<tr>
+								<th colspan="2" bgcolor="#EA6153" style="color: #FFFFFF; padding-top: 10px; padding-bottom: 10px;">Welcome to EMP-Gen</th>
+							</tr>
+							<tr>
+								<th>User:</th>
+								<td><input type="text" name="user"></td>
+							</tr>
+							<tr>
+								<th>Password:</th>
+								<td><input type="password" name="password"></td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<table width="100%">
+							<tr style="background-color: #EA6153;">
+								<td width="50%" style="padding-top: 5px; padding-bottom: 5px;">
+									<input type="hidden" name="logintry" value="1">
+									<input type="submit" class="buttonlogin" value="LOGIN">
+								</td>
+								<td width="50%" style="padding-top: 5px; padding-bottom: 5px;">
+									<a href="new_user.html"><input type="button" class="buttonnew" value="NEW USER"></a>
+								</td>
+							</tr>
+						</table>
+					<td>
+				</tr>
+				<tr>
+					<td>
+						<table width="100%">
+							<tr>
+								<td colspan="2" bgcolor="#ffa9a0" style="color: #FFFFFF; padding-top: 5px; padding-bottom: 5px;">
+									<a href="../php/create_guest.php"><input type="button" class="buttonguest" value="LOGIN AS GUEST"></a>
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			</table>	
+		</form>
+	</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Mods-Settings</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	</head>
+
+	<body>
+		<?php
+			include("../php/check_login.php");
+		?>
+		
+		<form action="../php/activate_mods.php" method="POST">
+			<nav class="navbar navbar-inverse navbar-fixed-top">
+				<div class="container-fluid">
+					<div class="navbar-header">
+						<a class="navbar-brand" href="#">
+							<?php 
+								include("../php/globals.php"); 
+								if(isset($_COOKIE[$cookiename])) {
+									echo $_COOKIE[$cookiename];
+								}
+							?>
+						</a>
+					</div>
+					<ul class="nav navbar-nav">
+						<li><a href="../main.html">Home</a></li>
+						<li class="active"><a href="#">Mod-Settings</a></li>
+					</ul>
+					<ul class="nav navbar-nav navbar-right">
+						<?php
+							include("../php/globals.php"); 
+							if(isset($_COOKIE[$cookiename])) {
+								echo "<li><a href=\"../php/logout.php\"><span class=\"glyphicon glyphicon-log-out\"></span> Logout</a></li>";
+							} else {
+								echo "<li><a href=\"login.html\"><span class=\"glyphicon glyphicon-log-in\"></span> Login</a></li>";
+							}
+						?>
+					</ul>
+				</div>
+			</nav>
+			<div class="container" style="margin-top:75px">
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<fieldset>
+							<?php
+								include("../php/globals.php");
+								
+								// get and display data from database
+								$pdo = new PDO("mysql:host=$servername;dbname=$dbname", $dbusername, $dbpassword);
+								$sql = "SELECT * FROM mods";
+								
+								echo "<table>";
+								
+								$numofmods = 0;
+								foreach ($pdo->query($sql) as $row) {
+								
+									// check if current mod is set active
+									$checked = "";
+									if ($row["2_active"] == 1) {
+										$checked = " checked";
+									}
+									$modname = $row["1_name"];
+									$modid = $row["0_ID"];
+									
+									echo "<tr><td><input type=\"hidden\" name=\"".$modid."\" value=\"0\">";
+									echo "<input type=\"checkbox\" name=\"".$modid."\" value=\"1\"".$checked."> ".$modname."</td></tr>";
+								
+									$numofmods++;
+								}
+								
+								echo "</table><br><br>";
+								echo "<input type=\"hidden\" name=\"modcounter\" value=\"".$numofmods."\">";
+								echo "<button type=\"submit\" class=\"btn btn-success btn-lg\">Save</button";
+							?>
+						</fieldset>
+					</div>
+				</div>
+			</div>
+		</form>
+	</body>
+</html>

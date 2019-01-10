@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Stellaris Empire Generator</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		
+		<style>
+			.nav.navbar-nav li.reset_button a {
+				color: white;
+				background-color: red;
+			}
+		</style>
+	</head>
+
+	<script>
+		function regenerate(script,parameter1="",parameter2="") {
+			var xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+					document.getElementById(script).innerHTML = this.responseText;
+				}
+			};
+			
+			var url = "php/rerun_generation.php?script=" + script;
+			if (parameter1) {
+				parameter1 = document.getElementById(parameter1).value
+				url = url + "&parameter1=" + parameter1;
+			}
+			if (parameter2) {
+				parameter2 = document.getElementById(parameter2).value
+				url = url + "&parameter2=" + parameter2;
+			}
+			
+			xhttp.open("GET", url, true);
+			xhttp.send();
+		}
+		
+		function checkMinMaxTraits() {
+			var min = document.getElementById("min_traits").value;
+			var max = document.getElementById("max_traits").value;
+			
+			if ((min < 0) || (min > 5)) {
+				document.getElementById("traits_regen").innerHTML = "<button type=\"button\" class=\"btn btn-danger\" onclick=\"regenerate('traits','min_traits','max_traits')\" disabled>Regenerate</button><button type=\"button\" class=\"btn btn-primary\" data-toggle=\"collapse\" data-target=\"#traits_options\">Options</button>";
+			} else {
+				document.getElementById("traits_regen").innerHTML = "<button type=\"button\" class=\"btn btn-primary\" onclick=\"regenerate('traits','min_traits','max_traits')\">Regenerate</button><button type=\"button\" class=\"btn btn-primary\" data-toggle=\"collapse\" data-target=\"#traits_options\">Options</button>";
+			}
+		}
+	</script>
+	
+	<body>
+		<?php
+			$pathextra = "html/";
+			include("php/check_login.php");
+		?>
+			
+		<nav class="navbar navbar-inverse navbar-fixed-top">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="#">
+						<?php 
+							include("php/globals.php"); 
+							if(isset($_COOKIE[$cookiename])) {
+								echo $_COOKIE[$cookiename];
+							}
+						?>
+					</a>
+				</div>
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="#">Home</a></li>
+					<li><a href="html/mod_settings.html">Mod-Settings</a></li>
+					<li class="reset_button"><a href="main.html">Reset</a></li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<?php
+						include("php/globals.php"); 
+						if(isset($_COOKIE[$cookiename])) {
+							echo "<li><a href=\"php/logout.php\"><span class=\"glyphicon glyphicon-log-out\"></span> Logout</a></li>";
+						} else {
+							echo "<li><a href=\"html/login.html\"><span class=\"glyphicon glyphicon-log-in\"></span> Login</a></li>";
+						}
+					?>
+				</ul>
+			</div>
+		</nav>
+		<div class="container-fluid" style="margin-top:75px; margin-left:25px">
+			<div id="errors"></div>
+			<?php
+				include_once("php/generator_scripts/authority_generator.php");
+				include_once("php/generator_scripts/citystyle_generator.php");
+				include_once("php/generator_scripts/ethics_generator.php");
+				include_once("php/generator_scripts/name_generator.php");
+				include_once("php/generator_scripts/namelist_generator.php");
+				include_once("php/generator_scripts/phenotype_generator.php");
+				include_once("php/generator_scripts/planet_generator.php");
+				include_once("php/generator_scripts/ship_prefix_generator.php");
+				include_once("php/generator_scripts/ship_generator.php");
+				include_once("php/generator_scripts/trait_generator.php");
+				
+
+				echo "<div id=\"empirename\">";
+				$names = gen_name(0);
+				foreach($names as $part) {
+					echo $part."<br>";
+				}
+				echo "</div>";
+				echo "<button type=\"button\" class=\"btn btn-primary\" onclick=\"regenerate('empirename','','')\">Regenerate</button><br>";
+				
+				
+				echo "<br>";
+				
+				
+				echo "<div id=\"shipprefix\">";
+				echo gen_prefix()."<br>";
+				echo "</div>";
+				echo "<button type=\"button\" class=\"btn btn-primary\" onclick=\"regenerate('shipprefix')\">Regenerate</button><br>";
+				
+				
+				echo "<br>";
+				
+				
+				echo "<div id=\"namelist\">";
+				echo gen_namelist()."<br>";
+				echo "</div>";
+				echo "<button type=\"button\" class=\"btn btn-primary\" onclick=\"regenerate('namelist')\">Regenerate</button><br>";
+				
+				
+				echo "<br>";
+				
+				
+				echo "<div id=\"planet\">";
+				$planet = gen_planet();
+				echo $planet."<br>";
+				echo "</div>";
+				echo "<button type=\"button\" class=\"btn btn-primary\" onclick=\"regenerate('planet')\">Regenerate</button><br>";
+				
+				
+				echo "<br>";
+				
+				
+				echo "<div id=\"citystyle\">";
+				$retrunvalue = gen_citystyle(0,$planet);
+				echo $retrunvalue[1]."<br><img src=\"".$retrunvalue[0]."\"/><br>";
+				echo "</div>";
+				echo "<button type=\"button\" class=\"btn btn-primary\" onclick=\"regenerate('citystyle')\">Regenerate</button><br>";
+				
+				
+				echo "<br>";
+				
+				
+				echo "<div id=\"phenotype\">";
+				$retrunvalue = gen_phenotype();
+				echo $retrunvalue[1]."<br><img src=\"".$retrunvalue[0]."\"/><br>";
+				echo "</div>";
+				echo "<button type=\"button\" class=\"btn btn-primary\" onclick=\"regenerate('phenotype')\">Regenerate</button><br>";
+				
+				
+				echo "<br>";
+				
+				
+				echo "<div id=\"ships\">";
+				$retrunvalue = gen_ships();
+				echo $retrunvalue[1]."<br><img src=\"".$retrunvalue[0]."\"/><br>";
+				echo "</div>";
+				echo "<button type=\"button\" class=\"btn btn-primary\" onclick=\"regenerate('ships')\">Regenerate</button><br>";
+				
+				
+				echo "<br>";
+				
+				
+				echo "<div id=\"traits\">";
+				$traits = gen_traits();
+				foreach($traits as $currenttrait) {
+					echo "<img src=\"".$currenttrait[6]."\"/> / ".$currenttrait[1]." / ".$currenttrait[4]."<br>";
+				}
+				echo "</div>";
+				echo "<form><div class=\"btn-group\" id=\"traits_regen\">";
+				echo "<button type=\"button\" class=\"btn btn-primary\" onclick=\"regenerate('traits','min_traits','max_traits')\">Regenerate</button>";
+				echo "<button type=\"button\" class=\"btn btn-primary\" data-toggle=\"collapse\" data-target=\"#traits_options\">Options</button>";
+				echo "</div><br>";
+				
+				echo "<div id=\"traits_options\" class=\"collapse\">";
+				echo "<div class=\"well\">";
+				echo "<div class=\"form-group row\">";
+				echo "<div class=\"col-xs-1\">";
+				echo "<label for=\"min_traits\">Min. Traits</label>";
+				echo "<input class=\"form-control\" id=\"min_traits\" type=\"number\" value=\"0\" onchange=\"checkMinMaxTraits()\">";
+				echo "</div>";
+				echo "<div class=\"col-xs-1\">";
+				echo "<label for=\"max_traits\">Max. Traits</label>";
+				echo "<input class=\"form-control\" id=\"max_traits\" type=\"number\" value=\"5\" onchange=\"checkMinMaxTraits()\">";
+				echo "</div></div></div></div></form>";
+				
+				
+				echo "<br>";
+				
+				
+				$ethics = gen_ethics();
+				foreach($ethics as $currentethic) {
+					echo "<img src=\"".$currentethic[2]."\"/> / ".$currentethic[1]." / ".$currentethic[5]."<br>";
+				}
+				
+				
+				echo "<br>";
+				
+				
+				$authority = gen_authority();
+				echo "<img src=\"".$authority[2]."\"/> / ".$authority[1]." / ".$authority[3]."<br>";
+				
+				
+				echo "<br>";
+			?>
+		</div>
+	</body>
+</html>
