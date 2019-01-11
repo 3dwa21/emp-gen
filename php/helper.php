@@ -1,19 +1,10 @@
 <?php
 
     function getUserName() {
-        include("../php/globals.php");
+        include_once("../php/globals.php");
         if(isset($_COOKIE[$cookiename])) {
             return $_COOKIE[$cookiename];
         }
-    }
-
-    //===========================================================================//
-
-    function displayDanger($dangerMessage) {
-        echo "<div class=\"alert alert-danger alert-dismissible\">";
-        echo "<button type=\"button\" class=\"close\" data-dismiss=\"alert\">&times;</button>";
-        echo "<strong>".$dangerMessage."</strong>";
-        echo "</div>";
     }
 
     //===========================================================================//
@@ -65,5 +56,29 @@
     }
 
     //===========================================================================//
+
+    function buildNavBar($ismain=0) {
+        include_once("helper.php"); 
+
+        $output = "<nav class=\"navbar navbar-expand-sm bg-dark navbar-dark fixed-top\">";
+		$output = $output."<div class=\"navbar-header\">";
+		$output = $output."<a class=\"navbar-brand\" href=\"#\">";
+		$output = $output.getUserName();
+        $output = $output."</a>";
+		$output = $output."</div>";
+		$output = $output."<ul class=\"navbar-nav\">";
+		$output = $output."<li><a class=\"nav-link\" href=\"main.html\"><strong>Home</strong></a></li>";
+        $output = $output."<li><a class=\"nav-link\" href=\"mod_settings.html\">Mod-Settings</a></li>";
+        if ($ismain==1) {
+            $output = $output."<li class=\"reset_button\"><a class=\"nav-link\" href=\"main.html\">Reset</a></li>";
+        }
+		$output = $output."</ul>";
+		$output = $output."<ul class=\"navbar-nav ml-auto\">";
+		$output = $output. checkLoginLogout();
+        $output = $output."</ul>";
+        $output = $output."</nav>";
+
+        return $output;
+    }
 
 ?>

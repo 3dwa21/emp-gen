@@ -56,28 +56,9 @@
 	<body>
 		<?php
 			include("../php/check_login.php");
+			include("../php/helper.php");
+			echo buildNavBar(1);
 		?>
-		<nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
-			<div class="navbar-header">
-				<a class="navbar-brand" href="#">
-					<?php 
-						include_once("../php/helper.php"); 
-						echo getUserName();
-					?>
-				</a>
-			</div>
-			<ul class="navbar-nav">
-				<li class="active"><a class="nav-link" href="main.html">Home</a></li>
-				<li><a class="nav-link" href="mod_settings.html">Mod-Settings</a></li>
-				<li class="reset_button"><a class="nav-link" href="main.html">Reset</a></li>
-			</ul>
-			<ul class="navbar-nav ml-auto">
-				<?php
-					include_once("../php/helper.php"); 
-					echo checkLoginLogout();
-				?>
-			</ul>
-		</nav>
 		<div class="container-fluid" style="margin-top:75px; margin-left:25px">
 			<div id="errors"></div>
 			<?php
@@ -175,7 +156,8 @@
 				echo "</div><br>";
 				
 				echo "<div id=\"traits_options\" class=\"collapse\">";
-				echo "<div class=\"well\">";
+				echo "<div class=\"card\">";
+				echo "<div class=\"card-body\">";
 				echo "<div class=\"form-group row\">";
 				echo "<div class=\"col-xs-1\">";
 				echo "<label for=\"min_traits\">Min. Traits</label>";
@@ -184,7 +166,7 @@
 				echo "<div class=\"col-xs-1\">";
 				echo "<label for=\"max_traits\">Max. Traits</label>";
 				echo "<input class=\"form-control\" id=\"max_traits\" type=\"number\" value=\"5\" onchange=\"checkMinMaxTraits()\">";
-				echo "</div></div></div></div></form>";
+				echo "</div></div></div></div></div></form>";
 				
 				
 				echo "<br>";

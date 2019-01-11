@@ -9,71 +9,62 @@
 		<script src="../bootstrap/js/popper.min.js"></script>
 		<script src="../bootstrap/js/bootstrap.min.js"></script>
 		<script defer src="../fontawsome/js/all.js"></script>
+
+		<style>
+			.btn-group.special {
+				display: flex;
+			}
+
+			.special .btn {
+				flex: 1
+			}
+		</style>
 	</head>
 
 	<body>
-		<nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
-			<div class="navbar-header">
-				<a class="navbar-brand" href="#">
-					<?php 
-						include_once("../php/helper.php"); 
-						echo getUserName();
-					?>
-				</a>
-			</div>
-			<ul class="navbar-nav">
-				<li><a class="nav-link" href="main.html">Home</a></li>
-				<li><a class="nav-link" href="mod_settings.html">Mod-Settings</a></li>
-			</ul>
-			<ul class="navbar-nav ml-auto">
-				<?php
-					include_once("../php/helper.php"); 
-					echo checkLoginLogout();
-				?>
-			</ul>
-		</nav>
-		<h1>Registration</h1>
-		<br>
-		<form action="../php/check_registration.php" method="POST">
+		<?php
+			include("../php/helper.php");
+			echo buildNavBar();
+		?>
+		<div class="container" style="margin-top:75px">
 			<?php 
-				include_once("../php/helper.php");
+				include_once("../php/display_messages.php");
 
 				if (isset($_GET["nouser"])) {
-					echo displayDanger("Please enter username!");
+					echo displayAlert("Please enter username!","danger");
 				}
 				if (isset($_GET["nopw"])) {
-					echo displayDanger("Please enter password!");
+					echo displayAlert("Please enter password!","danger");
 				}
 				if (isset($_GET["nopwc"])) {
-					echo displayDanger("Please enter password check!");
+					echo displayAlert("Please enter password check!","danger");
 				}
 				if (isset($_GET["taken"])) {
-					echo displayDanger("Username is already taken!");
+					echo displayAlert("Username is already taken!","danger");
 				}
 				if (isset($_GET["fixpw"])) {
-					echo displayDanger("Entered passwords don't match!");
+					echo displayAlert("Entered passwords don't match!","danger");
 				}
 			?>
-			<br>
-			<fieldset>
-				<table>
-					<tr>
-						<td>User:</td>
-						<td><input type="text" size="20" name="username"></td>
-					</tr>
-					<tr>
-						<td>Password:</td>
-						<td><input type="password" size="20" name="password"></td>
-					</tr>
-					<tr>
-						<td>Password check:</td>
-						<td><input type="password" size="20" name="passwordcheck"></td>
-					</tr>
-				</table>
-				<br>
-				<input type="submit" value="Register">
-				<a href="login.html"><input type="button" value="Back"></a>
-			</fieldset>
+		</div>
+		<form action="../php/check_registration.php" method="POST">
+			<div class="container" style="margin-top: 150px">
+				<div class="col-sm-4 mx-auto">
+				<div class="card mx-auto">
+					<div class="card-body">
+						<div class="form-group">
+								<input type="text" class="form-control" placeholder="User" name="username">
+								<input type="password" class="form-control" placeholder="Password" name="password">
+								<input type="password" class="form-control" placeholder="Password" name="passwordcheck">
+							</div>
+							<div class="btn-group special">
+								<input type="submit" class="btn btn-primary" value="Register">
+								<a href="login.html" role="button" class="btn btn-primary">Back</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 		</form>
 	</body>
 </html>
