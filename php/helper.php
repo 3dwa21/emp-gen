@@ -1,7 +1,7 @@
 <?php
 
     function getUserName() {
-        include_once("../php/globals.php");
+        include("../php/globals.php");
         if(isset($_COOKIE[$cookiename])) {
             return $_COOKIE[$cookiename];
         }
@@ -58,12 +58,12 @@
     //===========================================================================//
 
     function buildNavBar($ismain=0) {
-        include_once("helper.php"); 
+        $username = getUserName();
 
         $output = "<nav class=\"navbar navbar-expand-sm bg-dark navbar-dark fixed-top\">";
 		$output = $output."<div class=\"navbar-header\">";
-		$output = $output."<a class=\"navbar-brand\" href=\"#\">";
-		$output = $output.getUserName();
+        $output = $output."<a class=\"navbar-brand\" href=\"#\">";
+        $output = $output.$username;
         $output = $output."</a>";
 		$output = $output."</div>";
 		$output = $output."<ul class=\"navbar-nav\">";
