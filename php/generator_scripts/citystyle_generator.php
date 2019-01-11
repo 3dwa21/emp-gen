@@ -6,8 +6,8 @@
 			include("globals.php");
 			include_once("get_active_mods.php");
 		} else {
-			include("php/globals.php");
-			include_once("php/get_active_mods.php");
+			include("../php/globals.php");
+			include_once("../php/get_active_mods.php");
 		}
 		
 		$activemods = get_active_mods();
@@ -28,7 +28,7 @@
 		$planetparam = strtolower($planetparam);
 		
 		$img = $planetparam."_".$choosen_style_linkpart.".bmp";
-		$link = "resources/img/city_styles_imgs/".$img;
+		$link = "../resources/img/city_styles_imgs/".$img;
 		
 		$output[] = $link;
 		$output[] = $choosen_style;

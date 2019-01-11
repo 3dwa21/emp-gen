@@ -6,8 +6,8 @@
 			include("globals.php");
 			include_once("get_active_mods.php");
 		} else {
-			include("php/globals.php");
-			include_once("php/get_active_mods.php");
+			include("../php/globals.php");
+			include_once("../php/get_active_mods.php");
 		}
 	
 		
@@ -49,7 +49,7 @@
 		$rows = count($links);
 		$choosen_row = rand(0,$rows-1);
 		$choosen_img = $links[$choosen_row][2]; // 2 -> link
-		$choosen_img = "resources/img/species_imgs/".$choosen_img.".bmp";
+		$choosen_img = "../resources/img/species_imgs/".$choosen_img.".bmp";
 		
 		$output[] = $choosen_img;
 		$output[] = $categories[$category][1]; // 1 -> name

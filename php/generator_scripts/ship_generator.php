@@ -6,8 +6,8 @@
 			include("globals.php");
 			include_once("get_active_mods.php");
 		} else {
-			include("php/globals.php");
-			include_once("php/get_active_mods.php");
+			include("../php/globals.php");
+			include_once("../php/get_active_mods.php");
 		}
 	
 		$activemods = get_active_mods();
@@ -24,7 +24,7 @@
 		$choosen_row = rand(0,$rows-1);
 		$choosen_ship = $array[$choosen_row][1]; // 1 -> 1_name
 		$choosen_ship_file = $array[$choosen_row][3]; // 3 -> 3_file
-		$link = "resources/img/ships_imgs/".$choosen_ship_file.".bmp";
+		$link = "../resources/img/ships_imgs/".$choosen_ship_file.".bmp";
 		
 		$output[] = $link;
 		$output[] = $choosen_ship;

@@ -3,15 +3,7 @@
 	include("globals.php");
 	if (!isset($_POST["logintry"])) {
 		if(!isset($_COOKIE[$cookiename])) {
-			$path = "login.html?notloggedin=1";
-			
-			if (isset($pathextra)) {
-				$path = $pathextra.$path;
-			} else {
-				$path = "../html/".$path;
-			}
-			
-			header("Location: $path");
+			header("Location: ../html/login.html?notloggedin=1");
 			die();
 		}
 	} else {
@@ -31,7 +23,7 @@
 			if ((strcmp($user,$row["1_username"]) == 0) && (password_verify($password, $row["2_password"]))) {
 				$userid = $row["0_ID"];
 				setcookie($cookiename,$user,time() + (86400 * 30), "/");
-				header("Location: ../main.html");
+				header("Location: ../html/main.html");
 				die();
 			} else {
 				header("Location: ../html/login.html?success=0");

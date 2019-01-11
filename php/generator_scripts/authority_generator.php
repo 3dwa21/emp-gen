@@ -7,9 +7,9 @@
 			include_once("parser.php");
 			include_once("get_active_mods.php");
 		} else {
-			include("php/globals.php");
-			include_once("php/parser.php");
-			include_once("php/get_active_mods.php");
+			include("../php/globals.php");
+			include_once("../php/parser.php");
+			include_once("../php/get_active_mods.php");
 		}
 	
 		$activemods = get_active_mods();
@@ -56,7 +56,7 @@
 		
 		$choosen_authority = $array[$choosen_row];
 		
-		$link = "resources/img/authority_imgs/".$choosen_authority[2].".png";
+		$link = "../resources/img/authority_imgs/".$choosen_authority[2].".png";
 		$choosen_authority[2] = $link;
 		
 		$description = $choosen_authority[3];

@@ -1,13 +1,7 @@
 <?php
 
-    function getUserName($calledfrommain = 0) {
-        $path = "../";
-
-        if ($calledfrommain == 1) {
-            $path = "";
-        }
-
-        include("".$path."php/globals.php");
+    function getUserName() {
+        include("../php/globals.php");
         if(isset($_COOKIE[$cookiename])) {
             return $_COOKIE[$cookiename];
         }
@@ -24,16 +18,10 @@
 
     //===========================================================================//
 
-    function checkLoginLogout($calledfrommain = 0) {
-        $path = "../";
-
-        if ($calledfrommain == 1) {
-            $path = "";
-        }
-
-        include($path."php/globals.php"); 
+    function checkLoginLogout() {
+        include("../php/globals.php"); 
         if(isset($_COOKIE[$cookiename])) {
-            return "<li><a class=\"nav-link\" href=\"".$path."php/logout.php\"><i class=\"fas fa-sign-out-alt\"></i> Logout</a></li>";
+            return "<li><a class=\"nav-link\" href=\"../php/logout.php\"><i class=\"fas fa-sign-out-alt\"></i> Logout</a></li>";
         } else {
             return "<li><a class=\"nav-link\" href=\"login.html\"><i class=\"fas fa-sign-in-alt\"></i> Login</a></li>";
         }

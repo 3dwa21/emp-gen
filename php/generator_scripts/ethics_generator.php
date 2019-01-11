@@ -7,9 +7,9 @@
 			include_once("parser.php");
 			include_once("get_active_mods.php");
 		} else {
-			include("php/globals.php");
-			include_once("php/parser.php");
-			include_once("php/get_active_mods.php");
+			include("../php/globals.php");
+			include_once("../php/parser.php");
+			include_once("../php/get_active_mods.php");
 		}
 		
 		$activemods = get_active_mods();
@@ -90,7 +90,7 @@
 		
 		$numofchoosenethics = sizeof($choosen_ethics);
 		for($i=0;$i<$numofchoosenethics;$i++) {
-			$link = "resources/img/ethics_imgs/".$choosen_ethics[$i][2].".png";
+			$link = "../resources/img/ethics_imgs/".$choosen_ethics[$i][2].".png";
 			$choosen_ethics[$i][2] = $link;
 			
 			$description = $choosen_ethics[$i][5];

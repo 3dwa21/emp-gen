@@ -6,8 +6,8 @@
 			include("globals.php");
 			include_once("get_active_mods.php");
 		} else {
-			include("php/globals.php");
-			include_once("php/get_active_mods.php");
+			include("../php/globals.php");
+			include_once("../php/get_active_mods.php");
 		}
 	
 		$activemods = get_active_mods();

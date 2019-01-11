@@ -27,7 +27,7 @@
 				$icon = $icon[0];
 			}
 			
-			$icon_path = "resources/img/".$folder."/".$icon.".png";
+			$icon_path = "../resources/img/".$folder."/".$icon.".png";
 			$html_block = "<img src=\"".$icon_path."\" width=\"22\" height=\"22\"/>";
 			
 			$lengthreplace = ($foundend + 2) - $found;

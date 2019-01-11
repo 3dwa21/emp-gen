@@ -17,7 +17,7 @@
 		
 		setcookie($cookiename,$username,time() + (86400 * 30), "/");
 		
-		header("Location: ../main.html");
+		header("Location: ../html/main.html");
 		die();
 		
 	} catch(PDOException $e) {
