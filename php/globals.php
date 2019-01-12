@@ -9,5 +9,6 @@
 	$cookie_authority = "set_authority";
 	
 	$cookiename = "emp-gen_login";
+	$cookieid = "emp-gen_userid";
 	
 ?>

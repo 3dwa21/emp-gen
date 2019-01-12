@@ -23,6 +23,7 @@
 			if ((strcmp($user,$row["1_username"]) == 0) && (password_verify($password, $row["2_password"]))) {
 				$userid = $row["0_ID"];
 				setcookie($cookiename,$user,time() + (86400 * 30), "/");
+				setcookie($cookieid,$userid,time() + (86400 * 30), "/");
 				header("Location: ../html/main.html");
 				die();
 			} else {

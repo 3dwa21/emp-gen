@@ -16,6 +16,7 @@
 		$username = $username." ".$userid;
 		
 		setcookie($cookiename,$username,time() + (86400 * 30), "/");
+		setcookie($cookieid,$userid,time() + (86400 * 30), "/");
 		
 		header("Location: ../html/main.html");
 		die();
