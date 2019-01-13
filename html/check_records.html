@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Stellaris Empire Generator</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+		<script src="../bootstrap/js/jquery.min.js"></script>
+		<script src="../bootstrap/js/popper.min.js"></script>
+		<script src="../bootstrap/js/bootstrap.min.js"></script>
+		<script defer src="../fontawsome/js/all.js"></script>
+	</head>
+	
+	<body>
+		<?php
+			include("../php/check_login.php");
+			include_once("../php/helper.php");
+			echo buildNavBar(0);
+		?>
+		<div class="container-fluid" style="margin-top:75px; margin-left:25px">
+            <?php
+            include_once("../php/helper.php");
+                echo displayAllRecords();
+            ?>
+		</div>
+	</body>
+</html>
