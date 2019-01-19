@@ -11,16 +11,9 @@
 
 	function gen_name($output_type = 0) { //output_type: 0 -> array; 1 -> name only
 		$probs;
-		if (file_exists("resources/csv/probs.csv")) {
-			$handle = fopen("resources/csv/probs.csv", "r");
-		} else {
-			$handle = fopen("../resources/csv/probs.csv", "r");
-		}
-		
-		$row = 0;
+		$handle = fopen("../resources/csv/probs.csv", "r");
 		while (($data = fgetcsv($handle, 0, ",")) !== FALSE) {
-			$probs[$row] = $data;
-			$row++;
+			$probs[] = $data;
 		}
 		fclose($handle);
 		

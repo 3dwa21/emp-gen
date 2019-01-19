@@ -1,14 +1,9 @@
 <?php
 	
-	function gen_ships($rerun = 0) {
+	function gen_ships() {
 	
-		if ($rerun == 1) {
-			include("globals.php");
-			include_once("get_active_mods.php");
-		} else {
-			include("../php/globals.php");
-			include_once("../php/get_active_mods.php");
-		}
+		include("globals.php");
+		include_once("get_active_mods.php");
 	
 		$activemods = get_active_mods();
 		

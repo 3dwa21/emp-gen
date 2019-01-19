@@ -1,16 +1,10 @@
 <?php
 
-	function gen_ethics($rerun = 0, $minethics = 1, $maxethics = 3) { // parameter -> min. number of traits, max. number of traits;
+	function gen_ethics($minethics = 1, $maxethics = 3) { // parameter -> min. number of traits, max. number of traits;
 		
-		if ($rerun == 1) {
-			include("globals.php");
-			include_once("parser.php");
-			include_once("get_active_mods.php");
-		} else {
-			include("../php/globals.php");
-			include_once("../php/parser.php");
-			include_once("../php/get_active_mods.php");
-		}
+		include("globals.php");
+		include_once("parser.php");
+		include_once("get_active_mods.php");
 		
 		$activemods = get_active_mods();
 	

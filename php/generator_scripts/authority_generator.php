@@ -1,16 +1,10 @@
 <?php
 	
-	function gen_authority($rerun = 0) {
+	function gen_authority() {
 	
-		if ($rerun == 1) {
-			include("globals.php");
-			include_once("parser.php");
-			include_once("get_active_mods.php");
-		} else {
-			include("../php/globals.php");
-			include_once("../php/parser.php");
-			include_once("../php/get_active_mods.php");
-		}
+		include("globals.php");
+		include_once("parser.php");
+		include_once("get_active_mods.php");
 	
 		$activemods = get_active_mods();
 		
