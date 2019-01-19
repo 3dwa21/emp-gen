@@ -174,6 +174,15 @@
 								
         // get and display data from database
         $pdo = new PDO("mysql:host=$servername;dbname=$dbname", $dbusername, $dbpassword);
+
+        $user_id = $_COOKIE[$cookieid];
+        $sql = "SELECT * FROM `usersettings` WHERE `0_userid` = ".$user_id;
+		$stmt = $pdo->prepare($sql); 
+		$stmt->execute(); 
+        $row = $stmt->fetch();
+        $activemods = $row['1_active_mods'];
+        $activemods = explode(",",$activemods);
+
         $sql = "SELECT * FROM mods";
         
         $output = $output."<table>";
@@ -183,11 +192,14 @@
         
             // check if current mod is set active
             $checked = "";
-            if ($row["2_active"] == 1) {
-                $checked = " checked";
+            $modid = $row["0_ID"];
+            foreach ($activemods as $mod_row) {
+                if ($mod_row[0] == $modid) {
+                    $checked = " checked";
+                }
             }
             $modname = $row["1_name"];
-            $modid = $row["0_ID"];
+            
             
             $output = $output."<tr><td><input type=\"hidden\" name=\"".$modid."\" value=\"0\">";
             $output = $output."<input type=\"checkbox\" name=\"".$modid."\" value=\"1\"".$checked."> ".$modname."</td></tr>";

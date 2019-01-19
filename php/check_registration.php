@@ -39,7 +39,10 @@
 				try {
 					$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 					$sql = "INSERT INTO `users` (`1_username`,`2_password`) VALUES ('$username','$password')";
-					echo $sql;
+					$pdo->exec($sql);
+
+					$user_id = $pdo->lastInsertId();
+					$sql = "INSERT INTO `usersettings`(`0_userid`,`1_active_mods`) VALUES ('$user_id','0')";
 					$pdo->exec($sql);
 					
 					header("Location: ../html/login.html?success=1");

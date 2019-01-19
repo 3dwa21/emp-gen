@@ -9,11 +9,13 @@
 		
 		$username = "Guest";
 		$sql = "INSERT INTO `users` (`1_username`,`2_password`) VALUES ('$username','$password')";
-		echo $sql;
 		$pdo->exec($sql);
 		
 		$userid = $pdo->lastInsertId();
 		$username = $username." ".$userid;
+
+		$sql = "INSERT INTO `usersettings`(`0_userid`,`1_active_mods`) VALUES ('$userid','0')";
+		$pdo->exec($sql);
 		
 		setcookie($cookiename,$username,time() + (86400 * 30), "/");
 		setcookie($cookieid,$userid,time() + (86400 * 30), "/");

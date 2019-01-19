@@ -3,17 +3,17 @@
 	function get_active_mods() {
 	
 		include("globals.php");
+
+		$user_id = $_COOKIE[$cookieid];
 	
 		// get data from database
 		$pdo = new PDO("mysql:host=$servername;dbname=$dbname", $dbusername, $dbpassword);
-		$sql = "SELECT * FROM `mods` WHERE `2_active`=1";
+		$sql = "SELECT * FROM `usersettings` WHERE `0_userid` = ".$user_id;
 		
-		$activemods = "";
-		foreach ($pdo->query($sql) as $row) {
-			$modid = $row["0_ID"];
-			$activemods = $activemods.$modid.",";
-		}
-		$activemods = substr($activemods, 0, -1);
+		$stmt = $pdo->prepare($sql); 
+		$stmt->execute(); 
+		$row = $stmt->fetch();
+		$activemods = $row['1_active_mods'];
 		
 		return $activemods;
 	}

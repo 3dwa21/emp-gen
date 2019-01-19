@@ -8,7 +8,7 @@
 		$activemods = get_active_mods();
 		
 		$pdo = new PDO("mysql:host=$servername;dbname=$dbname", $dbusername, $dbpassword);
-		$sql = "SELECT * FROM `phenotype_categories`";
+		$sql = "SELECT * FROM `phenotype_categories` WHERE `2_mod` IN ($activemods)";
 		$numofcategories = 0;
 		foreach ($pdo->query($sql) as $row) {
 			$categories[] = $row;
@@ -26,6 +26,7 @@
 				$modid = $activemods_array[$i];
 				if ($categorymod == $modid) {
 					$categoryok = true;
+					$categoryid = $categories[$category][0];
 				}
 			}
 			if (!$categoryok) {
@@ -35,7 +36,7 @@
 		
 		$links = array();
 		// get data from database
-		$sql = "SELECT * FROM `phenotypes` WHERE `1_category`=".$category." AND `3_mod` IN ($activemods)";
+		$sql = "SELECT * FROM `phenotypes` WHERE `1_category`=".$categoryid." AND `3_mod` IN ($activemods)";
 		foreach ($pdo->query($sql) as $row) {
 			$links[] = $row;
 		}
