@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 19. Mrz 2019 um 20:25
+-- Erstellungszeit: 20. Mrz 2019 um 21:03
 -- Server-Version: 10.1.37-MariaDB
 -- PHP-Version: 7.3.1
 
@@ -44,10 +44,10 @@ INSERT INTO `authorities` (`0_ID`, `1_name`, `2_icon`, `3_description`, `4_mod`)
 (1, 'Democratic', 'democratic', '[[IC:democratic;authority_imgs]] Democratic elections[[LB]][[IC:time]] 10 year term[[LB]][[IC:agenda]] Rulers have agendas[[LB]][[IC:election]] Re-election', 0),
 (2, 'Oligarchic', 'oligarchic', '[[IC:oligarchic;authority_imgs]] Oligarchic elections[[LB]][[IC:time]] 20 years term[[LB]][[IC:agenda]] Rulers have agendas[[LB]][[IC:election]] Emergency elections (at [[IC:influence]] [[#FF0000;250]] Influence)', 0),
 (3, 'Dictatorial', 'dictatorial', '[[IC:oligarchic;authority_imgs]] Oligarchic elections[[LB]]\r\n[[IC:time]] Life term[[LB]]\r\n[[IC:agenda]] Rulers have agendas', 0),
-(4, 'Imperial', 'imperial', '[[IC:imperial;authority_imgs]] Hereditary rule[[LB]]\r\n[[IC:time]] Life term[[LB]]\r\n[[IC:agenda]] Rulers have agendas[[LB]]\r\n[[IC:yes]] Has heirs', 0),
-(5, 'Hive Mind', 'hive_mind', '[[IC:time]] Immortal ruler[[LB]]\r\n[[IC:no]] Factions[[LB]]\r\n[[IC:no]] Change authority[[LB]]\r\n[[IC:no]] Robots[[LB]]\r\n[[IC:growth_speed]] [[#008000;+25%]] Growth Speed[[LB]]\r\n[[IC:resettlement_cost]] [[#008000;-50%]] Resettlement cost[[LB]]\r\n[[IC:hive_mind;authority_imgs]] Hive Mind civics', 6),
-(6, 'Machine Intelligence', 'machine_intelligence', '[[IC:time]] Immortal ruler[[LB]]\r\n[[IC:no]] Factions[[LB]]\r\n[[IC:no]] Change authority[[LB]]\r\n[[IC:machine_intelligence;authority_imgs]] Machine civics[[LB]]\r\n[[IC:mechanical;traits_imgs]] Species group must be Machine', 5),
-(7, 'Corporate', 'corporate', '[[IC:oligarchic;authority_imgs]] Oligarchic elections[[LB]][[IC:time]] 20 year term[[LB]][[IC:agenda]] Rulers have agendas[[LB]][[IC:election]] Emergency elections (at [[IC:influence]] [[#FF0000;250]] Influence)[[LB]][[IC:administrative_cap]] [[#008000;+20]] Administrative Cap[[LB]][[IC:empire_size_penalty]] [[#FF0000;+50%]] Empire Size Penalty', 8);
+(4, 'Imperial', 'imperial', '[[IC:imperial;authority_imgs]] Hereditary rule[[LB]]\r\n[[IC:time]] Life term[[LB]]\r\n[[IC:agenda]] Rulers have agendas', 0),
+(5, 'Hive Mind', 'hive_mind', '[[IC:time]] Immortal ruler[[LB]]\r\n[[IC:no]] Change authority[[LB]]\r\n[[IC:no]] Robots[[LB]]\r\n[[IC:growth_speed]] [[#008000;+25%]] Growth Speed[[LB]]\r\n[[IC:yes]] Unique civics', 6),
+(6, 'Machine Intelligence', 'machine_intelligence', '[[IC:time]] Immortal ruler and leader[[LB]]\r\n[[IC:no]] Change Authority[[LB]]\r\n[[IC:pop_plus]][[#008000;+1]] Extra Pops on new Colonies[[LB]]\r\n[[IC:minerals_2]][[#008000;+10%]] Mining Station Output[[LB]]\r\n[[IC:yes]]Unique civics[[LB]]\r\n[[IC:alien_ai]] Species group must be Machine', 5),
+(7, 'Corporate', 'corporate', '[[IC:oligarchic;authority_imgs]] Oligarchic elections[[LB]][[IC:time]] 20 year term[[LB]][[IC:agenda]] Rulers have agendas[[LB]][[IC:election]] Emergency elections (at [[IC:influence]] [[#FF0000;250]] Influence)[[LB]][[IC:administrative_cap]] [[#008000;+20]] Administrative Cap[[LB]][[IC:empire_size_penalty]] [[#FF0000;+50%]] Empire Sprawl Penalty[[LB]]\r\n[[IC:yes]]Unique civics', 8);
 
 -- --------------------------------------------------------
 
@@ -98,10 +98,10 @@ CREATE TABLE `ethics` (
 --
 
 INSERT INTO `ethics` (`0_ID`, `1_name`, `2_icon`, `3_locks`, `4_mod`, `5_description`, `6_cost`, `7_block_authorities`) VALUES
-(1, 'Authoritarian', 'authoritarian', '2,3,4,17', 0, '[[#008000;+0,5]] [[IC:influence]] Monthly Influence[[LB]][[#008000;+5%]] [[IC:slavery_tolerance]] Slave Resource Produktion', 1, '1,5,6'),
-(2, 'Fanatic Authoritarian', 'fanatic_authoritarian', '1,3,4,17', 0, '[[#008000;+1]] [[IC:influence]] Monthly Influence[[LB]]\r\n[[#008000;+10%]] [[IC:slavery_tolerance]] Slave Resource Produktion', 2, '1,2,5,6'),
-(3, 'Egalitarian', 'egalitarian', '1,2,4,17', 0, '[[#008000;+25%]] [[IC:happiness]] Faction Influence Gain[[LB]][[#008000;-10%]] [[IC:consumer_goods]] Consumer Goode Cost', 1, '3,4,5,6'),
-(4, 'Fanatic Egalitarian', 'fanatic_egalitarian', '1,2,3,17', 0, '[[#008000;+50%]] [[IC:happiness]] Faction Influence Gain[[LB]][[#008000;-20%]] [[IC:consumer_goods]] Consumer Goode Cost', 2, '2,3,4,5,6'),
+(1, 'Authoritarian', 'authoritarian', '2,3,4,17', 0, '[[IC:influence]] [[#008000;+0,5]] Monthly Influence[[LB]][[IC:worker_output]] [[#008000;+5%]] Worker Output', 1, '1,5,6'),
+(2, 'Fanatic Authoritarian', 'fanatic_authoritarian', '1,3,4,17', 0, '[[IC:influence]] [[#008000;+1]] Monthly Influence[[LB]]\r\n[[IC:worker_output]] [[#008000;+10%]] Worker Output', 2, '1,2,5,6'),
+(3, 'Egalitarian', 'egalitarian', '1,2,4,17', 0, '[[IC:happiness]] [[#008000;+25%]] Faction Influence Gain[[LB]]\r\n[[IC:worker_output]] [[#008000;+5%]] Specialist Output', 1, '3,4,5,6'),
+(4, 'Fanatic Egalitarian', 'fanatic_egalitarian', '1,2,3,17', 0, '[[IC:happiness]] [[#008000;+50%]] Faction Influence Gain[[LB]]\r\n[[IC:worker_output]] [[#008000;+10%]] Specialist Output', 2, '2,3,4,5,6'),
 (5, 'Xenophobe', 'xenophobe', '6,7,8,17', 0, '[[#008000;-20%]] [[IC:influence]] Starbase Influence Cost[[LB]][[#008000;-10%]] [[IC:influence]] Claim Influence Cost', 1, '5,6'),
 (6, 'Fanatic Xenophobe', 'fanatic_xenophobe', '5,7,8,17', 0, '[[#008000;-40%]] [[IC:influence]] Starbase Influence Cost[[LB]][[#008000;-20%]] [[IC:influence]] Claim Influence Cost', 2, '5,6'),
 (7, 'Xenophile', 'xenophile', '5,6,8,17', 0, '[[#008000;-25%]] [[IC:border_friction]] Border Friction[[LB]][[#008000;-25%]] [[IC:influence]] Diplomatic Influence Cost', 1, '5,6'),
@@ -499,49 +499,6 @@ INSERT INTO `traits` (`0_ID`, `1_name`, `2_cost`, `3_exclude`, `4_effect`, `5_mo
 (34, 'Wasteful', -1, '9', '[[#FF0000;-15%]] [[IC:consumer_goods]] Consumer Goods Cost', 0, 'wasteful'),
 (35, 'Weak', -1, '19,20', '[[#FF0000;-20%]] [[IC:army_damage]] Army Damage[[LB]][[#FF0000;-5%]] [[IC:minerals]] Minerals', 0, 'weak');
 
--- --------------------------------------------------------
-
---
--- Tabellenstruktur für Tabelle `users`
---
-
-CREATE TABLE `users` (
-  `0_ID` int(11) NOT NULL,
-  `1_username` text NOT NULL,
-  `2_password` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Daten für Tabelle `users`
---
-
-INSERT INTO `users` (`0_ID`, `1_username`, `2_password`) VALUES
-(1, '3dwa21', '$2y$10$VokH/Zs0pYc4sm/Ca.ZpLeqrEcYMKq7X8kvQeZlZPWUbbYos1LKFO'),
-(2, 'test', '$2y$10$xXpkoN2k35oX2nVLYGKrDuQQnGKiU0X39BWG.tYeu/fuynaopEH.W'),
-(3, 'Guest', '$2y$10$XohfGY371gBAAzNHPkx9yu2aTZki9LCdVRkQG.WPGNv8oYwRLomhS'),
-(4, 'Guest', '$2y$10$zcDVfOiFbWaRR7Z2JrBL5em3I54BOGkkXX2GU2V3oimGhNfEk8GzO');
-
--- --------------------------------------------------------
-
---
--- Tabellenstruktur für Tabelle `usersettings`
---
-
-CREATE TABLE `usersettings` (
-  `0_userid` int(11) NOT NULL,
-  `1_active_mods` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Daten für Tabelle `usersettings`
---
-
-INSERT INTO `usersettings` (`0_userid`, `1_active_mods`) VALUES
-(0, '0'),
-(1, '0,1,2,3,4,5,6,7,8'),
-(2, '0'),
-(4, '0');
-
 --
 -- Indizes der exportierten Tabellen
 --
@@ -607,18 +564,6 @@ ALTER TABLE `traits`
   ADD PRIMARY KEY (`0_ID`);
 
 --
--- Indizes für die Tabelle `users`
---
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`0_ID`);
-
---
--- Indizes für die Tabelle `usersettings`
---
-ALTER TABLE `usersettings`
-  ADD PRIMARY KEY (`0_userid`);
-
---
 -- AUTO_INCREMENT für exportierte Tabellen
 --
 
@@ -681,12 +626,6 @@ ALTER TABLE `ships`
 --
 ALTER TABLE `traits`
   MODIFY `0_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
-
---
--- AUTO_INCREMENT für Tabelle `users`
---
-ALTER TABLE `users`
-  MODIFY `0_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
