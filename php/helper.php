@@ -15,7 +15,7 @@
 
         $output = "<nav class=\"navbar navbar-expand-sm bg-dark navbar-dark fixed-top\">";
 		$output = $output."<div class=\"navbar-header\">";
-        $output = $output."<a class=\"navbar-brand\" href=\"#\">";
+        $output = $output."<a class=\"navbar-brand\" href=\"user_profile.html\">";
         $output = $output.$username;
         $output = $output."</a>";
 		$output = $output."</div>";

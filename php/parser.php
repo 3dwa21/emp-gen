@@ -11,6 +11,9 @@
 	//===========================================================================//
 	
 	function parse_icons($input_text,$input_folder) {
+
+		// places image into text
+		// [[IC: filename ; additional/path ]]
 		
 		$found = strpos($input_text,"[[IC:");
 		while ($found > -1) {
@@ -44,6 +47,9 @@
 	
 	function parse_color($input_text) {
 	
+		// Parses color code (hex) to color text
+		// [[ #ffffff ; text ]]
+
 		$found = strpos($input_text,"[[#");
 		while ($found > -1) {
 			$foundend = strpos($input_text,"]]",$found);
@@ -66,6 +72,9 @@
 	//===========================================================================//
 	
 	function parse_linebreak($input_text) {
+
+		// Replaces [[LB]] for linebreaks
+		// (linebreaks directly in DB don't work)
 	
 		$placeholder = "[[LB]]";
 	
