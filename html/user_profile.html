@@ -9,12 +9,65 @@
 		<script src="../bootstrap/js/popper.min.js"></script>
 		<script src="../bootstrap/js/bootstrap.min.js"></script>
 		<script defer src="../fontawsome/js/all.js"></script>
-    </head>
-    <body>
-        <?php
-			include("../php/check_login.php");
-			include("../php/helper.php");
-			echo buildNavBar();
-		?>
-    </body>
+
+		<style>
+				.btn-group.special {
+					display: flex;
+				}
+	
+				.special .btn {
+					flex: 1
+				}
+			</style>
+  </head>
+  <body>
+			<?php
+				include("../php/helper.php");
+				echo buildNavBar();
+			?>
+			<div class="container" style="margin-top:75px">
+				<?php 
+					include_once("../php/display_messages.php");
+	
+					if (isset($_GET["nocurrentpw"])) {
+						echo displayAlert("Please enter current password!","danger");
+					}
+					if (isset($_GET["nonewpw"])) {
+						echo displayAlert("Please enter a new password!","danger");
+					}
+					if (isset($_GET["nonewpwcheck"])) {
+						echo displayAlert("Please enter repeat the new password!","danger");
+					}
+					if (isset($_GET["wrongcurrentpw"])) {
+						echo displayAlert("Wrong current password!","danger");
+					}
+					if (isset($_GET["mismatchnewpw"])) {
+						echo displayAlert("Mismatch in repeated new password!","danger");
+					}
+					if (isset($_GET["changeok"])) {
+						echo displayAlert("Password changed!","success");
+					}
+				?>
+			</div>
+			<form action="../php/check_new_password.php" method="POST">
+				<div class="container" style="margin-top: 150px">
+					<div class="col-sm-4 mx-auto">
+					<div class="card mx-auto">
+						<div class="card-body">
+							<div class="form-group">
+									<div class="alert alert-info">
+										Change Password:
+									</div>
+									<input type="password" class="form-control" placeholder="Current password" name="passwordcurrent">
+									<input type="password" class="form-control" placeholder="New password" name="password">
+									<input type="password" class="form-control" placeholder="Repeat new password" name="passwordcheck">
+								</div>
+								<div class="btn-group special">
+									<input type="submit" class="btn btn-primary" value="Change">
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+  </body>
 </html>
