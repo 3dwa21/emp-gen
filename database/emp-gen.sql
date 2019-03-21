@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.4
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 20. Mrz 2019 um 21:03
--- Server-Version: 10.1.37-MariaDB
--- PHP-Version: 7.3.1
+-- Erstellungszeit: 21. Mrz 2019 um 14:43
+-- Server-Version: 10.1.38-MariaDB
+-- PHP-Version: 7.3.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -98,23 +98,23 @@ CREATE TABLE `ethics` (
 --
 
 INSERT INTO `ethics` (`0_ID`, `1_name`, `2_icon`, `3_locks`, `4_mod`, `5_description`, `6_cost`, `7_block_authorities`) VALUES
-(1, 'Authoritarian', 'authoritarian', '2,3,4,17', 0, '[[IC:influence]] [[#008000;+0,5]] Monthly Influence[[LB]][[IC:worker_output]] [[#008000;+5%]] Worker Output', 1, '1,5,6'),
+(1, 'Authoritarian', 'authoritarian', '2,3,4,17', 0, '[[IC:influence]] [[#008000;+0,5]] Monthly Influence[[LB]]\r\n[[IC:worker_output]] [[#008000;+5%]] Worker Output', 1, '1,5,6'),
 (2, 'Fanatic Authoritarian', 'fanatic_authoritarian', '1,3,4,17', 0, '[[IC:influence]] [[#008000;+1]] Monthly Influence[[LB]]\r\n[[IC:worker_output]] [[#008000;+10%]] Worker Output', 2, '1,2,5,6'),
 (3, 'Egalitarian', 'egalitarian', '1,2,4,17', 0, '[[IC:happiness]] [[#008000;+25%]] Faction Influence Gain[[LB]]\r\n[[IC:worker_output]] [[#008000;+5%]] Specialist Output', 1, '3,4,5,6'),
-(4, 'Fanatic Egalitarian', 'fanatic_egalitarian', '1,2,3,17', 0, '[[IC:happiness]] [[#008000;+50%]] Faction Influence Gain[[LB]]\r\n[[IC:worker_output]] [[#008000;+10%]] Specialist Output', 2, '2,3,4,5,6'),
-(5, 'Xenophobe', 'xenophobe', '6,7,8,17', 0, '[[#008000;-20%]] [[IC:influence]] Starbase Influence Cost[[LB]][[#008000;-10%]] [[IC:influence]] Claim Influence Cost', 1, '5,6'),
-(6, 'Fanatic Xenophobe', 'fanatic_xenophobe', '5,7,8,17', 0, '[[#008000;-40%]] [[IC:influence]] Starbase Influence Cost[[LB]][[#008000;-20%]] [[IC:influence]] Claim Influence Cost', 2, '5,6'),
-(7, 'Xenophile', 'xenophile', '5,6,8,17', 0, '[[#008000;-25%]] [[IC:border_friction]] Border Friction[[LB]][[#008000;-25%]] [[IC:influence]] Diplomatic Influence Cost', 1, '5,6'),
-(8, 'Fanatic Xenophile', 'fanatic_xenophile', '5,6,7,17', 0, '[[#008000;-50%]] [[IC:border_friction]] Border Friction[[LB]][[#008000;-50%]] [[IC:influence]] Diplomatic Influence Cost', 2, '5,6'),
-(9, 'Militarist', 'militarist', '10,11,12,17', 0, '[[#008000;-10%]] [[IC:war_exhaustion]] War Exhaustion Gain[[LB]][[#008000;+10%]] [[IC:fire_rate]] Fire Rate', 1, '5,6'),
-(10, 'Fanatic Militarist', 'fanatic_militarist', '9,11,12,17', 0, '[[#008000;-20%]] [[IC:war_exhaustion]] War Exhaustion Gain[[LB]][[#008000;+20%]] [[IC:fire_rate]] Fire Rate', 2, '5,6'),
-(11, 'Pacifist', 'pacifist', '9,10,12,17', 0, '[[#008000;+5%]] [[IC:resource_output]] Pop Resource Produktion[[LB]][[#008000;+2]] [[IC:core_sector_systems]] Core Sector Systems', 1, '5,6'),
-(12, 'Fanatic Pacifist', 'fanatic_pacifist', '9,10,11,17', 0, '[[#008000;+10%]] [[IC:resource_output]] Pop Resource Produktion[[LB]][[#008000;+4]] [[IC:core_sector_systems]] Core Sector Systems', 2, '5,6'),
-(13, 'Materialist', 'materialist', '14,15,16,17', 0, '[[#008000;-10%]] [[IC:robot_upkeep]] Robot Upkeep[[LB]][[#008000;+5%]] [[IC:research_speed]] Research Speed', 1, '5,6'),
-(14, 'Fanatic Materialist', 'fanatic_materialist', '13,15,16,17', 0, '[[#008000;-20%]] [[IC:robot_upkeep]] Robot Upkeep[[LB]][[#008000;+10%]] [[IC:research_speed]] Research Speed', 2, '5,6'),
-(15, 'Spiritualist', 'spiritualist', '13,14,16,17', 0, '[[#008000;+10%]] [[IC:unity]] Monthly Unity[[LB]][[#008000;-5%]] [[IC:edict_cost]] Edict Cost', 1, '5,6'),
-(16, 'Fanatic Spiritualist', 'fanatic_spiritualist', '13,14,15,17', 0, '[[#008000;+20%]] [[IC:unity]] Monthly Unity[[LB]][[#008000;-10%]] [[IC:edict_cost]] Edict Cost', 2, '5,6'),
-(17, 'Gestalt Consciousness', 'gestalt_consciousness', '1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16', 5, '[[#008000;-20%]] [[IC:war_exhaustion]] War Exhaustion Gain[[LB]][[#008000;-33%]] [[IC:piracy_risk]] Piracy Risk[[LB]][[#008000;+1]] [[IC:influence]] Monthly Influence[[LB]][[#008000;+2]] [[IC:core_sector_systems]] Core Sector Systems', 3, '1,2,3,4');
+(4, 'Fanatic Egalitarian', 'fanatic_egalitarian', '1,2,3,17', 0, '[[IC:happiness]] [[#008000;+50%]] Faction Influence Gain[[LB]]\r\n[[IC:worker_output]] [[#008000;+10%]]  Specialist Output', 2, '2,3,4,5,6'),
+(5, 'Xenophobe', 'xenophobe', '6,7,8,17', 0, '[[IC:starbase_influence_cost]] [[#008000;-20%]] Starbase Influence Cost[[LB]]\r\n[[IC:growth_speed]] [[#008000;+10%]] Pop Growth Speed', 1, '5,6'),
+(6, 'Fanatic Xenophobe', 'fanatic_xenophobe', '5,7,8,17', 0, '[[IC:starbase_influence_cost]] [[#008000;-40%]] Starbase Influence Cost[[LB]]\r\n[[IC:growth_speed]] [[#008000;+20%]] Pop Growth Speed', 2, '5,6'),
+(7, 'Xenophile', 'xenophile', '5,6,8,17', 0, '[[IC:trade_value]] [[#008000;+10%]] Trade Value[[LB]]\r\n[[IC:influence]] [[#008000;-25%]] Diplomatic Influence Cost', 1, '5,6'),
+(8, 'Fanatic Xenophile', 'fanatic_xenophile', '5,6,7,17', 0, '[[IC:trade_value]] [[#008000;+20%]] Trade Value[[LB]]\r\n[[IC:influence]] [[#008000;-50%]] Diplomatic Influence Cost', 2, '5,6'),
+(9, 'Militarist', 'militarist', '10,11,12,17', 0, '[[IC:influence]] [[#008000;-10%]] Claim Influence Cost[[LB]]\r\n[[IC:fire_rate]] [[#008000;+10%]] Fire Rate', 1, '5,6'),
+(10, 'Fanatic Militarist', 'fanatic_militarist', '9,11,12,17', 0, '[[IC:influence]] [[#008000;-20%]] Claim Influence Cost[[LB]]\r\n[[IC:fire_rate]] [[#008000;+20%]] Fire Rate', 2, '5,6'),
+(11, 'Pacifist', 'pacifist', '9,10,12,17', 0, '[[IC:core_sector_systems]] [[#008000;+10]] Administrative Cap[[LB]]\r\n[[IC:stability]] [[#008000;+5]] Stability', 1, '5,6'),
+(12, 'Fanatic Pacifist', 'fanatic_pacifist', '9,10,11,17', 0, '[[IC:core_sector_systems]] [[#008000;+20]] Administrative Cap[[LB]]\r\n[[IC:stability]] [[#008000;+10]] Stability', 2, '5,6'),
+(13, 'Materialist', 'materialist', '14,15,16,17', 0, '[[IC:robot_upkeep]] [[#008000;-10%]] Robot Upkeep[[LB]]\r\n[[IC:research_speed]] [[#008000;+5%]] Research Speed', 1, '5,6'),
+(14, 'Fanatic Materialist', 'fanatic_materialist', '13,15,16,17', 0, '[[IC:robot_upkeep]] [[#008000;-20%]] Robot Upkeep[[LB]]\r\n[[IC:research_speed]] [[#008000;+10%]] Research Speed', 2, '5,6'),
+(15, 'Spiritualist', 'spiritualist', '13,14,16,17', 0, '[[IC:unity]] [[#008000;+10%]] Monthly Unity[[LB]]\r\n[[IC:edict_cost]] [[#008000;-5%]] Edict Cost', 1, '5,6'),
+(16, 'Fanatic Spiritualist', 'fanatic_spiritualist', '13,14,15,17', 0, '[[IC:unity]] [[#008000;+20%]] Monthly Unity[[LB]]\r\n[[IC:edict_cost]] [[#008000;-10%]] Edict Cost', 2, '5,6'),
+(17, 'Gestalt Consciousness', 'gestalt_consciousness', '1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16', 5, '[[#008000;-20%]] [[IC:war_exhaustion]] War Exhaustion Gain[[LB]]\r\n[[#008000;+1]] [[IC:influence]] Monthly Influence[[LB]]', 3, '1,2,3,4');
 
 -- --------------------------------------------------------
 
